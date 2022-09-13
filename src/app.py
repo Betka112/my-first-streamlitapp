@@ -228,6 +228,7 @@ with open('./data/georef-switzerland-kanton.geojson') as f:
 fig = px.choropleth_mapbox(energy,
                            geojson=geojson,
                            color="dom",
+                           range_color=colors,
                            locations="canton",
                            mapbox_style="carto-positron",
                            featureidkey='properties.kan_name',
