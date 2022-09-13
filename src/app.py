@@ -64,6 +64,7 @@ left_column, right_column = st.columns(2)
 energy = pd.pivot_table(df, values='electrical_capacity', index=["canton"],columns=["energy_source_level_2"]).reset_index().copy(deep=True)
 energy['dom']=energy[["Bioenergy","Hydro","Solar","Wind"]].idxmax(axis=1)
 energy = energy.fillna(0)
+energy['Total'] = energy.Bioenergy+energy.Hydro+energy.Solar+energy.Wind
 energy = np.round(energy, decimals=2)
 
 # Widgets: radio buttons
@@ -171,7 +172,7 @@ st.write("Data Source:", url)
 
 # Another header
 
-st.header("Maps")
+st.header("Electrical Capacity of Cantons")
 
 # Sample Streamlit Map
 
@@ -212,6 +213,7 @@ fig = px.choropleth_mapbox(energy,
                            featureidkey='properties.kan_name',
                            center = {"lat": 46.8, "lon": 8.3},
                            zoom=6,
+                           opacity=0.7,
                            hover_name="canton",
                            #hover_data=["Bioenergy",
                             #           "Hydro",
@@ -221,10 +223,11 @@ fig = px.choropleth_mapbox(energy,
                                        "Hydro":True,
                                        "Solar":True,
                                        "Wind":True,
+                                       "Total":True,
                                        "dom":False,
                                        "canton":False},
                            labels={"dom": "Dominant Energy Source"},
-                           title="<b>Electrical Capacity of Energy Sources in Kantons</b>",
+                           title="<b>Electrical Capacity of Energy Sources in Cantons</b>"
                            )
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.show()
