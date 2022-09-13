@@ -258,7 +258,7 @@ fig2 = px.choropleth_mapbox(energy,
                                        "Total":True,
                                        "dom":False,
                                        "canton":False},
-                           labels={"dom": "Dominant Energy Source"},
+                           #labels={"dom": "Dominant Energy Source"},
                            title="<b>Total Electrical Capacity of Cantons</b>"
                            )
 fig2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
