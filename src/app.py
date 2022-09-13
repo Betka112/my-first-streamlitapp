@@ -142,7 +142,7 @@ if "All" in kanton:
 hist_data = []
 
 for en in en_source:
-    hist_data.append(go.Bar(x=energy[energy['canton'].isin(kanton)]['canton'], y=energy[energy['canton'].isin(kanton)][en], name=en, color=colors))
+    hist_data.append(go.Bar(x=energy[energy['canton'].isin(kanton)]['canton'], y=energy[energy['canton'].isin(kanton)][en], name=en, color=colors[en]))
 
 fig_en = go.Figure(
     data=hist_data,
