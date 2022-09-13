@@ -194,7 +194,6 @@ st.header("Maps")
 
 with open('./data/georef-switzerland-kanton.geojson') as f:
     geojson = json.load(f)
-
 #plotly_map = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.fips, z=df.unemp,
  #                                   colorscale="Viridis", zmin=0, zmax=12,
   #                                  marker_opacity=0.5, marker_line_width=0))
