@@ -209,7 +209,7 @@ fig = px.choropleth_mapbox(df,
                            featureidkey='properties.kan_name',
                            center = {"lat": 46.8, "lon": 8.3},
                            hover_name="canton",
-                           labels={"energy_source_level_2": "Energy Source"},
+                           labels={"energy_source_level_2": "Dominant Energy Source"},
                            title="<b>Electrical Capacity of Energy Sources in Kantons</b>",
                            )
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
