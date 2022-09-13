@@ -162,6 +162,11 @@ fig_en = go.Figure(
 )
 
 fig_en.update_layout(hovermode="x unified")
+fig_en.update_layout(
+    title={"text": "Electrical Capacity of Selected Energy Sources in Cantons", "font": {"size": 24}},
+    xaxis={"title": {"text": "Cantons", "font": {"size": 16}}, "tickangle": 45},
+    yaxis={"title": {"text": "Electrical Capacity", "font": {"size": 16}}},
+)
 
 # maybe if it's empty show all?
 
