@@ -131,23 +131,23 @@ fig_en = go.Figure(
 
 fig_en.update_layout(hovermode="x unified")
 
-'''
-fig_en = go.Figure(
-    data=[
-        go.Bar(x=energy['canton'], y=energy['Bioenergy'], name="Bioenergy"),
-        go.Bar(x=energy['canton'], y=energy['Hydro'], name="Hydro"),
-        go.Bar(x=energy['canton'], y=energy['Solar'], name="Solar"),
-        go.Bar(x=energy['canton'], y=energy['Wind'], name="Wind")
-    ],
-    layout={
-        'barmode': 'stack'
-        # it puts the bars on top of each other
 
-    }
-)
+#fig_en = go.Figure(
+ #   data=[
+  #      go.Bar(x=energy['canton'], y=energy['Bioenergy'], name="Bioenergy"),
+   #     go.Bar(x=energy['canton'], y=energy['Hydro'], name="Hydro"),
+    #    go.Bar(x=energy['canton'], y=energy['Solar'], name="Solar"),
+     #   go.Bar(x=energy['canton'], y=energy['Wind'], name="Wind")
+   # ],
+    #layout={
+     #   'barmode': 'stack'
+      #  # it puts the bars on top of each other
 
-fig_en.update_layout(hovermode="x unified")
-'''
+    #}
+#)
+
+#fig_en.update_layout(hovermode="x unified")
+
 
 fig_en.show()
 
