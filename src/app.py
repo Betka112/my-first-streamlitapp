@@ -148,7 +148,7 @@ for en in en_source:
             x=energy[energy['canton'].isin(kanton)]['canton'],
             y=energy[energy['canton'].isin(kanton)][en],
             name=en,
-            #color=colors[en]
+            marker_color=colors[en]
         )
     )
 
