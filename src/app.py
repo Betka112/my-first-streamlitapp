@@ -115,6 +115,23 @@ en_source = right_column.multiselect(
   #                             mode="markers"))
    # p_fig.update_layout(showlegend=False)
 
+hist_data = []
+
+for en in en_source:
+    hist_data.append(go.Bar(x=energy[energy['canton'].isin(kanton)]['canton'], y=energy[energy['canton'].isin(kanton)][en], name=en))
+
+fig_en = go.Figure(
+    data=hist_data,
+    layout={
+        'barmode': 'stack'
+        # it puts the bars on top of each other
+
+    }
+)
+
+fig_en.update_layout(hovermode="x unified")
+
+'''
 fig_en = go.Figure(
     data=[
         go.Bar(x=energy['canton'], y=energy['Bioenergy'], name="Bioenergy"),
@@ -130,6 +147,7 @@ fig_en = go.Figure(
 )
 
 fig_en.update_layout(hovermode="x unified")
+'''
 
 fig_en.show()
 
