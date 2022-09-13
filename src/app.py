@@ -82,12 +82,18 @@ energy = np.round(energy, decimals=2)
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.multiselect
 # multiselect
+all_kan = list(energy.canton)
+all_kan.append("All")
+
 kanton = left_column.multiselect(
-    label='Show Kanton', options=list(energy.canton))
+    label='Show Kanton', options=all_kan)
 
 en_source = right_column.multiselect(
-    label='Show Energy Source', options=['Bioenergy', 'Hydro', 'Solar', 'Wind'])
-
+    label='Show Energy Source', options=['Bioenergy', 'Hydro', 'Solar', 'Wind','All'])
+if en_source=='All':
+    en_source=['Bioenergy', 'Hydro', 'Solar', 'Wind']
+if kanton=='All':
+    kanton=list(energy.canton)
 # tu si vyberiem, ktory typ grafu chcem mat
 #plot_types = ["Matplotlib", "Plotly"]
 #plot_type = right_column.radio("Choose Plot Type", plot_types)
@@ -233,10 +239,10 @@ fig = px.choropleth_mapbox(energy,
                                        "dom":False,
                                        "canton":False},
                            labels={"dom": "Dominant Energy Source",
-                                   "Bioenergy_per":"Bioenergy",
-                                   "Hydro_per": "Hydro",
-                                   "Solar_per": "Solar",
-                                   "Wind_per": "Wind"},
+                                   "Bioenergy_per":"Bioenergy in %",
+                                   "Hydro_per": "Hydro in %",
+                                   "Solar_per": "Solar in %",
+                                   "Wind_per": "Wind in %"},
                            title="<b>Electrical Capacity of Energy Sources in Cantons</b>"
                            )
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
