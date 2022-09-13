@@ -142,7 +142,14 @@ if "All" in kanton:
 hist_data = []
 
 for en in en_source:
-    hist_data.append(go.Bar(x=energy[energy['canton'].isin(kanton)]['canton'], y=energy[energy['canton'].isin(kanton)][en], name=en, color=colors[en]))
+    hist_data.append(
+        go.Bar(
+            x=energy[energy['canton'].isin(kanton)]['canton'],
+            y=energy[energy['canton'].isin(kanton)][en],
+            name=en,
+            #color=colors[en]
+        )
+    )
 
 fig_en = go.Figure(
     data=hist_data,
@@ -228,7 +235,7 @@ with open('./data/georef-switzerland-kanton.geojson') as f:
 fig = px.choropleth_mapbox(energy,
                            geojson=geojson,
                            color="dom",
-                           range_color=colors,
+                           #range_color=colors,
                            locations="canton",
                            mapbox_style="carto-positron",
                            featureidkey='properties.kan_name',
