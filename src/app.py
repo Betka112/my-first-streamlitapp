@@ -272,7 +272,7 @@ fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.show()
 
 # toto prida plotly chart
-st.plotly_chart(fig)
+st.plotly_chart(fig, use_container_width=True)
 
 st.header("Total Electrical Capacity of Cantons")
 
