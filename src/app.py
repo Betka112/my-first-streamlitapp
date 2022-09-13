@@ -65,6 +65,12 @@ energy = pd.pivot_table(df, values='electrical_capacity', index=["canton"],colum
 energy['dom']=energy[["Bioenergy","Hydro","Solar","Wind"]].idxmax(axis=1)
 energy = energy.fillna(0)
 energy['Total'] = energy.Bioenergy+energy.Hydro+energy.Solar+energy.Wind
+
+# get percentage
+power = ["Bioenergy","Hydro","Solar","Wind"]
+for p in power:
+    energy[p+'_per'] = (energy[p]/energy["Total"])*100
+
 energy = np.round(energy, decimals=2)
 
 # Widgets: radio buttons
@@ -219,14 +225,18 @@ fig = px.choropleth_mapbox(energy,
                             #           "Hydro",
                              #          "Solar",
                               #         "Wind"],
-                           hover_data={"Bioenergy":True,
-                                       "Hydro":True,
-                                       "Solar":True,
-                                       "Wind":True,
+                           hover_data={"Bioenergy_per":True,
+                                       "Hydro_per":True,
+                                       "Solar_per":True,
+                                       "Wind_per":True,
                                        "Total":True,
                                        "dom":False,
                                        "canton":False},
-                           labels={"dom": "Dominant Energy Source"},
+                           labels={"dom": "Dominant Energy Source",
+                                   "Bioenergy_per":"Bioenergy",
+                                   "Hydro_per": "Hydro",
+                                   "Solar_per": "Solar",
+                                   "Wind_per": "Wind"},
                            title="<b>Electrical Capacity of Energy Sources in Cantons</b>"
                            )
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
