@@ -94,7 +94,7 @@ kanton = left_column.multiselect(
 en_source = right_column.multiselect(
     label='Show Energy Source', options=['Bioenergy', 'Hydro', 'Solar', 'Wind','All'])
 
-if en_source=='All':
+if 'All' in en_source:
     en_source=['Bioenergy', 'Hydro', 'Solar', 'Wind']
 if "All" in kanton:
     kanton=list(energy.canton)
