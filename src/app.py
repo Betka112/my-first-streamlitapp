@@ -76,7 +76,7 @@ if st.checkbox("Show Dataframe"):
 
 colors = {"Bioenergy":"brown",
           "Hydro":"blue",
-          "Solar":"yellow",
+          "Solar":"orange",
           "Wind":"grey"}
 # Widgets: radio buttons
 #kanton = left_column.radio(
