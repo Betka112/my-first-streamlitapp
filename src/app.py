@@ -41,11 +41,6 @@ st.header("Types of Energy Sources in Swiss Kantons")
 
 # you could store the info about the box in a variable
 # and this creates the inter activity
-if st.checkbox("Show Dataframe"):
-    # it's a boolean when it's chceked it's True
-    st.subheader("This is my dataset:")
-    st.dataframe(data=df)
-    # st.table(data=mpg_df)
 
 # Setting up columns
 left_column, right_column = st.columns(2)
@@ -72,6 +67,12 @@ for p in power:
     energy[p+'_per'] = (energy[p]/energy["Total"])*100
 
 energy = np.round(energy, decimals=2)
+
+if st.checkbox("Show Dataframe"):
+    # it's a boolean when it's chceked it's True
+    st.subheader("This is my dataset:")
+    st.dataframe(data=energy)
+    # st.table(data=mpg_df)
 
 colors = {"Bioenergy":"brown",
           "Hydro":"blue",
