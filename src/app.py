@@ -131,6 +131,7 @@ fig_en = go.Figure(
 
 fig_en.update_layout(hovermode="x unified")
 
+# maybe if it's empty show all?
 
 #fig_en = go.Figure(
  #   data=[
@@ -167,7 +168,7 @@ st.write("Data Source:", url)
 
 # Another header
 
-#st.header("Maps")
+st.header("Maps")
 
 # Sample Streamlit Map
 
@@ -191,6 +192,9 @@ st.write("Data Source:", url)
 #df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
  #                dtype={"fips": str})
 
+with open('georef-switzerland-kanton.geojson') as f:
+    geojson = json.load(f)
+
 #plotly_map = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.fips, z=df.unemp,
  #                                   colorscale="Viridis", zmin=0, zmax=12,
   #                                  marker_opacity=0.5, marker_line_width=0))
@@ -198,5 +202,10 @@ st.write("Data Source:", url)
  #                 mapbox_zoom=3, mapbox_center={"lat": 37.0902, "lon": -95.7129},
   #                margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
+fig = px.choropleth_mapbox(df, geojson=geojson, color="energy_source_level_2",
+                    locations="canton", mapbox_style="carto-positron", featureidkey='properties.kan_name', center = {"lat": 46.8, "lon": 8.3})
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig.show()
+
 # toto prida plotly chart
-#st.plotly_chart(plotly_map)
+st.plotly_chart(fig)
