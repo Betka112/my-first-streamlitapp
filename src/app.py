@@ -61,7 +61,7 @@ left_column, right_column = st.columns(2)
 
 # creating pivot table for the data
 energy = pd.pivot_table(df, values='electrical_capacity', index=["canton"],columns=["energy_source_level_2"]).reset_index().copy(deep=True)
-energy.head()
+energy['dom']=energy[["Bioenergy","Hydro","Solar","Wind"]].idxmax(axis=1)
 
 # Widgets: radio buttons
 #kanton = left_column.radio(
@@ -201,15 +201,15 @@ with open('./data/georef-switzerland-kanton.geojson') as f:
  #                 mapbox_zoom=3, mapbox_center={"lat": 37.0902, "lon": -95.7129},
   #                margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
-fig = px.choropleth_mapbox(df,
+fig = px.choropleth_mapbox(energy,
                            geojson=geojson,
-                           color="energy_source_level_2",
+                           color="dom",
                            locations="canton",
                            mapbox_style="carto-positron",
                            featureidkey='properties.kan_name',
                            center = {"lat": 46.8, "lon": 8.3},
                            hover_name="canton",
-                           labels={"energy_source_level_2": "Dominant Energy Source"},
+                           labels={"dom": "Dominant Energy Source"},
                            title="<b>Electrical Capacity of Energy Sources in Kantons</b>",
                            )
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
