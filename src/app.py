@@ -192,7 +192,7 @@ st.header("Maps")
 #df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
  #                dtype={"fips": str})
 
-with open('georef-switzerland-kanton.geojson') as f:
+with open('./data/georef-switzerland-kanton.geojson') as f:
     geojson = json.load(f)
 
 #plotly_map = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.fips, z=df.unemp,
