@@ -234,3 +234,35 @@ fig.show()
 
 # toto prida plotly chart
 st.plotly_chart(fig)
+
+st.header("Total Electrical Capacity of Cantons")
+
+fig2 = px.choropleth_mapbox(energy,
+                           geojson=geojson,
+                           color="Total",
+                           locations="canton",
+                           mapbox_style="carto-positron",
+                           featureidkey='properties.kan_name',
+                           center = {"lat": 46.8, "lon": 8.3},
+                           zoom=6,
+                           opacity=0.7,
+                           hover_name="canton",
+                           #hover_data=["Bioenergy",
+                            #           "Hydro",
+                             #          "Solar",
+                              #         "Wind"],
+                           hover_data={"Bioenergy":True,
+                                       "Hydro":True,
+                                       "Solar":True,
+                                       "Wind":True,
+                                       "Total":True,
+                                       "dom":False,
+                                       "canton":False},
+                           labels={"dom": "Dominant Energy Source"},
+                           title="<b>Total Electrical Capacity of Cantons</b>"
+                           )
+fig2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig2.show()
+
+# toto prida plotly chart
+st.plotly_chart(fig2)
