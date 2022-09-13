@@ -214,7 +214,7 @@ fig = px.choropleth_mapbox(energy,
                             #           "Hydro",
                              #          "Solar",
                               #         "Wind"],
-                           hover_data={"Bioenergy":True
+                           hover_data={"Bioenergy":True,
                                        "Hydro":True,
                                        "Solar":True,
                                        "Wind":True,
