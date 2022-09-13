@@ -73,6 +73,10 @@ for p in power:
 
 energy = np.round(energy, decimals=2)
 
+colors = {"Bioenergy":"brown",
+          "Hydro":"blue",
+          "Solar":"yellow",
+          "Wind":"grey"}
 # Widgets: radio buttons
 #kanton = left_column.radio(
  #   label='Show Kanton', options=energy.canton)
@@ -138,7 +142,7 @@ if "All" in kanton:
 hist_data = []
 
 for en in en_source:
-    hist_data.append(go.Bar(x=energy[energy['canton'].isin(kanton)]['canton'], y=energy[energy['canton'].isin(kanton)][en], name=en))
+    hist_data.append(go.Bar(x=energy[energy['canton'].isin(kanton)]['canton'], y=energy[energy['canton'].isin(kanton)][en], name=en, color=colors))
 
 fig_en = go.Figure(
     data=hist_data,
