@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 from urllib.request import urlopen
 import json
 from copy import deepcopy
+import numpy as np
 import plotly.io as pio
 
 
@@ -62,6 +63,8 @@ left_column, right_column = st.columns(2)
 # creating pivot table for the data
 energy = pd.pivot_table(df, values='electrical_capacity', index=["canton"],columns=["energy_source_level_2"]).reset_index().copy(deep=True)
 energy['dom']=energy[["Bioenergy","Hydro","Solar","Wind"]].idxmax(axis=1)
+energy = energy.fillna(0)
+energy = np.round(energy, decimals=2)
 
 # Widgets: radio buttons
 #kanton = left_column.radio(
