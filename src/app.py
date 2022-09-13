@@ -140,7 +140,7 @@ fig_en.show()
 #else:
 #
 # plot the graph in streamline
-st.plotly_chart(p_fig)
+st.plotly_chart(fig_en)
 
 # We can write stuff
 url = "https://open-power-system-data.org/"
