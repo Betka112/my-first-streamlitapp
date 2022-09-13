@@ -201,8 +201,17 @@ with open('./data/georef-switzerland-kanton.geojson') as f:
  #                 mapbox_zoom=3, mapbox_center={"lat": 37.0902, "lon": -95.7129},
   #                margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
-fig = px.choropleth_mapbox(df, geojson=geojson, color="energy_source_level_2",
-                    locations="canton", mapbox_style="carto-positron", featureidkey='properties.kan_name', center = {"lat": 46.8, "lon": 8.3})
+fig = px.choropleth_mapbox(df,
+                           geojson=geojson,
+                           color="energy_source_level_2",
+                           locations="canton",
+                           mapbox_style="carto-positron",
+                           featureidkey='properties.kan_name',
+                           center = {"lat": 46.8, "lon": 8.3},
+                           labels={"canton": "Canton",
+                                   "energy_source_level_2": "Energy Source"},
+                           title="<b>Electrical Capacity of Energy Sources in Kantons</b>",
+                           )
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.show()
 
