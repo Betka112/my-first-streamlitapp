@@ -219,7 +219,7 @@ fig = px.choropleth_mapbox(energy,
                                        "Solar":True,
                                        "Wind":True,
                                        "dom":False,
-                                       "canton":False}
+                                       "canton":False},
                            labels={"dom": "Dominant Energy Source"},
                            title="<b>Electrical Capacity of Energy Sources in Kantons</b>",
                            )
