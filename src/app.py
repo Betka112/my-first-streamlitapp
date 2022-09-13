@@ -82,17 +82,21 @@ energy = np.round(energy, decimals=2)
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.multiselect
 # multiselect
+
 all_kan = list(energy.canton)
 all_kan.append("All")
+
+
 
 kanton = left_column.multiselect(
     label='Show Kanton', options=all_kan)
 
 en_source = right_column.multiselect(
     label='Show Energy Source', options=['Bioenergy', 'Hydro', 'Solar', 'Wind','All'])
+
 if en_source=='All':
     en_source=['Bioenergy', 'Hydro', 'Solar', 'Wind']
-if kanton=='All':
+if "All" in kanton:
     kanton=list(energy.canton)
 # tu si vyberiem, ktory typ grafu chcem mat
 #plot_types = ["Matplotlib", "Plotly"]
