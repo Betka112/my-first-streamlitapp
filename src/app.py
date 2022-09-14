@@ -61,6 +61,7 @@ energy = pd.pivot_table(df_new.groupby(["canton","energy_source_level_2"]).agg('
                         index=["canton"],
                         columns=["energy_source_level_2"]).copy(deep=True)
 energy = energy.reset_index()
+
 energy['dom']=energy[["Bioenergy","Hydro","Solar","Wind"]].idxmax(axis=1)
 energy = energy.fillna(0)
 energy['Total'] = energy.Bioenergy+energy.Hydro+energy.Solar+energy.Wind
