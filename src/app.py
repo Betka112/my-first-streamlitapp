@@ -28,7 +28,7 @@ cantons_dict = {'TG':'Thurgau', 'GR':'Graubünden', 'LU':'Luzern', 'BE':'Bern', 
 
 df_raw = load_data(path="./data/renewable_power_plants_CH.csv")
 # raw stays untouched
-df = deepcopy(df_raw.replace({"canton": cantons_dict}))
+df = deepcopy(df_raw.replace({"canton": cantons_dict}).groupby(["canton","energy_source_level_2"]).agg('sum'))
 # cache looks for changes
 
 # Add title and header
