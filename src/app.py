@@ -322,10 +322,10 @@ if 'All' in en_source:
 if "All" in kanton:
     kanton=list(energy.canton)
 
-hist_data = []
+hist_data2 = []
 
 for en in en_source:
-    hist_data.append(
+    hist_data2.append(
         go.Bar(
             x=energy[energy['canton'].isin(kanton)]['canton'],
             y=energy[energy['canton'].isin(kanton)][en+"_per"],
@@ -335,7 +335,7 @@ for en in en_source:
     )
 
 fig_en2 = go.Figure(
-    data=hist_data,
+    data=hist_data2,
     layout={
         'barmode': 'stack'
         # it puts the bars on top of each other
