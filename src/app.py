@@ -56,7 +56,7 @@ left_column, right_column = st.columns(2)
 # vyraba vyrolovacie okno
 
 # creating pivot table for the data
-energy = pd.pivot_table(df_new.groupby(["canton","energy_source_level_2"]).agg('sum'),
+energy = pd.pivot_table(df,
                         values='electrical_capacity',
                         index=["canton"],
                         columns=["energy_source_level_2"]).copy(deep=True)
