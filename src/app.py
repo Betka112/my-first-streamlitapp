@@ -311,7 +311,7 @@ fig2.show()
 # toto prida plotly chart
 st.plotly_chart(fig2)
 
-st.header("Types of Energy Sources in Swiss Kantons")
+st.header("Percentage of Energy Sources in Swiss Kantons")
 left_column, right_column = st.columns(2)
 kanton = left_column.multiselect(
     label='Show Kanton', options=all_kan)
@@ -334,7 +334,7 @@ for en in en_source:
         )
     )
 
-fig_en = go.Figure(
+fig_en2 = go.Figure(
     data=hist_data,
     layout={
         'barmode': 'stack'
@@ -343,9 +343,11 @@ fig_en = go.Figure(
     }
 )
 
-fig_en.update_layout(hovermode="x unified")
-fig_en.update_layout(
+fig_en2.update_layout(hovermode="x unified")
+fig_en2.update_layout(
     title={"text": "Electrical Capacity of Selected Energy Sources in Cantons", "font": {"size": 24}},
     xaxis={"title": {"text": "Cantons", "font": {"size": 16}}, "tickangle": 45},
     yaxis={"title": {"text": "Electrical Capacity", "font": {"size": 16}}},
 )
+
+st.plotly_chart(fig_en2)
