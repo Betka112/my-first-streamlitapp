@@ -311,43 +311,43 @@ fig2.show()
 # toto prida plotly chart
 st.plotly_chart(fig2)
 
-st.header("Percentage of Energy Sources in Swiss Kantons")
-left_column, right_column = st.columns(2)
-kanton = left_column.multiselect(
-    label='Show Kanton', options=all_kan)
-en_source = right_column.multiselect(
-    label='Show Energy Source', options=['Bioenergy', 'Hydro', 'Solar', 'Wind','All'])
-if 'All' in en_source:
-    en_source=['Bioenergy', 'Hydro', 'Solar', 'Wind']
-if "All" in kanton:
-    kanton=list(energy.canton)
+#st.header("Percentage of Energy Sources in Swiss Kantons")
+#left_column, right_column = st.columns(2)
+#kanton = left_column.multiselect(
+ #   label='Show Kanton', options=all_kan)
+#en_source = right_column.multiselect(
+ #   label='Show Energy Source', options=['Bioenergy', 'Hydro', 'Solar', 'Wind','All'])
+#if 'All' in en_source:
+ #   en_source=['Bioenergy', 'Hydro', 'Solar', 'Wind']
+#if "All" in kanton:
+ #   kanton=list(energy.canton)
 
-hist_data2 = []
+#hist_data2 = []
 
-for en in en_source:
-    hist_data2.append(
-        go.Bar(
-            x=energy[energy['canton'].isin(kanton)]['canton'],
-            y=energy[energy['canton'].isin(kanton)][en+"_per"],
-            name=en,
-            marker_color=colors[en]
-        )
-    )
+#for en in en_source:
+ #   hist_data2.append(
+  #      go.Bar(
+   #         x=energy[energy['canton'].isin(kanton)]['canton'],
+    #        y=energy[energy['canton'].isin(kanton)][en+"_per"],
+     #       name=en,
+      #      marker_color=colors[en]
+       # )
+    #)
 
-fig_en2 = go.Figure(
-    data=hist_data2,
-    layout={
-        'barmode': 'stack'
+#fig_en2 = go.Figure(
+ #   data=hist_data2,
+  #  layout={
+   #     'barmode': 'stack'
         # it puts the bars on top of each other
 
-    }
-)
+   # }
+#)
 
-fig_en2.update_layout(hovermode="x unified")
-fig_en2.update_layout(
-    title={"text": "Electrical Capacity of Selected Energy Sources in Cantons", "font": {"size": 24}},
-    xaxis={"title": {"text": "Cantons", "font": {"size": 16}}, "tickangle": 45},
-    yaxis={"title": {"text": "Electrical Capacity", "font": {"size": 16}}},
-)
+#fig_en2.update_layout(hovermode="x unified")
+#fig_en2.update_layout(
+ #   title={"text": "Electrical Capacity of Selected Energy Sources in Cantons", "font": {"size": 24}},
+  #  xaxis={"title": {"text": "Cantons", "font": {"size": 16}}, "tickangle": 45},
+   # yaxis={"title": {"text": "Electrical Capacity", "font": {"size": 16}}},
+#)
 
-st.plotly_chart(fig_en2)
+#st.plotly_chart(fig_en2)
